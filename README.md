@@ -34,3 +34,10 @@ Simply extract the contents of the provided ZIP file and place the folder in the
 
 [Fonts.zip](https://github.com/inef1337/based/files/11236013/Fonts.zip)
 
+
+## External Dependencies 
+
+https://www.microsoft.com/en-us/download/details.aspx?id=6812
+
+
+
