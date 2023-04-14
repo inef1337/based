@@ -68,10 +68,11 @@ namespace based::gui
 	}
 
 	bool control_interface::is_key_pressed(std::uint16_t key) {
-		if (GetAsyncKeyState(key) & 0x8000) {
-			return true;
+		if (GetForegroundWindow() == FindWindowA("grcWindow", "Grand Theft Auto V")) {
+			if (GetAsyncKeyState(key) & 0x8000) {
+				return true;
+			}
 		}
-
 		return false;
 	}
 

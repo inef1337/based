@@ -21,6 +21,12 @@ namespace based::gui
         return m_submenu_parent;
     }
 
+    void submenu_handler::cleanup() {
+        for (submenu* submenu : m_submenus) {
+            delete submenu;
+        }
+    }
+
     void submenu::update_menu() {
         ImGui::SetNextWindowPos(window_position);
         ImGui::SetNextWindowSize(ImVec2(1920.f, 1080.f));

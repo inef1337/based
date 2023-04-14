@@ -14,6 +14,7 @@ namespace based::gui
 
 		void set_submenu(submenu* submenu);
 		void set_submenu_previous();
+		void cleanup();
 
 		submenu* m_current_submenu{ nullptr };
 	private:

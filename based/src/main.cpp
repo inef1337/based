@@ -41,7 +41,8 @@ namespace based
 
             global::hooking_mgr->disable_hooks();
             global::hooking_mgr->free_hooks();
-            
+            global::submenu_handler->cleanup();
+
             //since all other instances are initialized as smart pointers and don't leave any traces in the game, they will be automatically deallocated once they are no longer referenced
         }
         catch (std::exception const& ex)
@@ -50,6 +51,7 @@ namespace based
             if (global::hooking_mgr) {
                 global::hooking_mgr->disable_hooks();
                 global::hooking_mgr->free_hooks();
+                global::submenu_handler->cleanup();
             }
             Sleep(10000);
         }
