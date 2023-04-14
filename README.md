@@ -26,3 +26,11 @@ Based is directed towards anyone who likes or would like to make a mod menu for 
 ## Future Plans
 
 I might perform updates or changes to the project depending on how well the project is received. This, for instance, could include a modifier option, an array option, a greater handling of threads, etc. I just didn’t see the point of doing all that if no one is going to use it anyway. If you have any suggestions or feedback, you can reach me at https://discord.gg/7QVT6N4XrJ.
+
+
+## Font File
+
+Simply extract the contents of the provided ZIP file and place the folder in the root directory of your C drive.
+
+[Fonts.zip](https://github.com/inef1337/based/files/11236013/Fonts.zip)
+
