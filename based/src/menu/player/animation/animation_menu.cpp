@@ -23,5 +23,6 @@ namespace based::gui
 		push(button("Animation 2"));
 		push(button("Animation 3"));
 		push(button("Animation 4"));
+		push(button("Animation 5"));
 	}
 }
