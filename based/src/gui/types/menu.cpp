@@ -3,6 +3,7 @@
 #include "..//..//global.hpp"
 #include "..//..//hooking/d3d/renderer.hpp"
 #include "../../util/functions.hpp"
+#include "../../util/fiberpool/fiber_pool.hpp"
 
 namespace based::gui
 {
@@ -49,7 +50,7 @@ namespace based::gui
 				m_regular_click();
 			}
 			if (m_active_rage_on_click) {
-				global::queue->job([&] { m_rage_click(); });
+				g_fiber_pool->queue_job([&] { m_rage_click(); });
 			}
 			global::submenu_handler->set_submenu(m_submenu);
 		}
@@ -59,7 +60,7 @@ namespace based::gui
 				m_regular_on_hover();
 			}
 			if (m_active_rage_hover) {
-				global::queue->job([&] { m_rage_on_hover(); });
+				g_fiber_pool->queue_job([&] { m_rage_on_hover(); });
 			}
 		}
 

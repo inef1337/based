@@ -4,6 +4,7 @@
 #include "control_interface.hpp"
 #include "..//global.hpp"
 #include "../rage/natives.hpp"
+#include "../util/fiberpool/fiber_pool.hpp"
 
 namespace based::gui
 {
@@ -60,6 +61,12 @@ namespace based::gui
                 }
             }
             footer();
+
+            g_fiber_pool->queue_job([] {
+                if (global::control->is_open()) {
+                    PAD::DISABLE_CONTROL_ACTION(0, 27, true); //Disable phone
+                }
+            });
         }
         ImGui::End();
     }

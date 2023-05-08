@@ -8,6 +8,9 @@
 #include <Windows.h>
 #include <cstdint>
 
+#include "util/script_mgr.hpp"
+#include "util/script/script.hpp"
+#include "util/fiberpool/fiber_pool.hpp"
 namespace based
 {
     void main_thread(const HMODULE instance)
@@ -30,7 +33,8 @@ namespace based
             global::hooking_mgr->create_hooks();
             global::hooking_mgr->enable_hooks();
 
-            global::init_queue();
+            const auto fiber_pool_instance = std::make_unique<fiber_pool>(11);
+
             global::init_control_interface();
             global::submenu_handler->load();
 

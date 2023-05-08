@@ -2,7 +2,6 @@
 #include "util/logger.hpp"
 #include "gui/submenu_handler.hpp"
 #include "gui/control_interface.hpp"
-#include "rage/native_queue.hpp"
 
 inline std::string base_name = "based";
 
@@ -23,5 +22,4 @@ namespace based::global
 
 	inline std::unique_ptr<gui::submenu_handler> submenu_handler;
 	inline std::unique_ptr<gui::control_interface> control;
-	inline std::unique_ptr<native_fiber_queue> queue;
 }

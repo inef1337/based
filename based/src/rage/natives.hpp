@@ -4,7 +4,7 @@
 #include "types.hpp"
 #include <minwindef.h>
 #include "invoker.hpp"
-#include "classes/native.hpp"
+#include "classes/classes.hpp"
 
 #define NATIVE_DECL __declspec(noinline) inline
 

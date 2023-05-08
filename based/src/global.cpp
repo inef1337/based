@@ -23,9 +23,7 @@ namespace based::global
 	void init_minhook() {
 		const auto status = MH_Initialize();
 		if (status != MH_OK) {
-			char buffer[50];
-			sprintf_s(buffer, "failed to initialize minhook - error code: %d", status);
-			throw std::runtime_error(buffer);
+			throw std::runtime_error(std::format("failed to initialize MinHook - error code: {}", static_cast<int>(status)));
 		}
 		console->log_to_console(log_color::green, "info", "initialized minhook");
 	}
@@ -33,11 +31,9 @@ namespace based::global
 	void uninit_minhook() {
 		const auto status = MH_Uninitialize();
 		if (status != MH_OK) {
-			char buffer[50];
-			sprintf_s(buffer, "failed to uninitialize minhook - error code: %d", status);
-			throw std::runtime_error(buffer);
+			throw std::runtime_error(std::format("failed to uninitialize MinHook - error code: {}", static_cast<int>(status)));
 		}
-		console->log_to_console(log_color::green, "info", "uninitialized minhook");
+		console->log_to_console(log_color::green, "info", "Uninitialized MinHook");
 	}
 
 	void init_pointers() {
@@ -78,14 +74,6 @@ namespace based::global
 			throw std::runtime_error("failed to initialize hooking manager");
 		}
 		console->log_to_console(log_color::green, "info", "initialized hooking manager");
-	}
-
-	void init_queue() {
-		queue = std::make_unique<native_fiber_queue>();
-		if (!queue) {
-			throw std::runtime_error("failed to initialize native fiber queue");
-		}
-		console->log_to_console(log_color::green, "info", "initialized native fiber queue");
 	}
 
 	void get_input() {

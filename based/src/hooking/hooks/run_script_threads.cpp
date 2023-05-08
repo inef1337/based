@@ -2,6 +2,9 @@
 #include "..//..//global.hpp"
 #include "..//hooking.hpp"
 #include "../../rage/natives.hpp"
+#include "..//..//util/script_mgr.hpp"
+#include "..//..//util/functions.hpp"
+#include "../pointers.hpp"
 
 namespace based::hooks
 {
@@ -12,14 +15,9 @@ namespace based::hooks
 		g_native_invoker.cache_handlers();
 
 		if (global::alive) {
-			if (m_frame_count != MISC::GET_FRAME_COUNT()) {
-				m_frame_count = MISC::GET_FRAME_COUNT();
-				global::queue->fiber_tick();
-			}
-
-			if (global::control->is_open()) {
-				PAD::DISABLE_CONTROL_ACTION(0, 27, true); //Disable phone
-			}
+			execute_script(util::gta::joaat("main_persistent"), [] {	
+				g_script_mgr.tick();
+			});
 		}
 
 		return static_cast<decltype(&run_script_threads)>(global::hooking_mgr->m_run_script_threads->m_original)(ops_to_execute);

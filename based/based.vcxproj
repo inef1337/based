@@ -168,6 +168,8 @@
     <ClCompile Include="src\menu\player\player_menu.cpp" />
     <ClCompile Include="src\rage\invoker.cpp" />
     <ClCompile Include="src\rage\native_queue.cpp" />
+    <ClCompile Include="src\util\fiberpool\fiber_pool.cpp" />
+    <ClCompile Include="src\util\script\script.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies\imgui\imconfig.h" />
@@ -203,16 +205,26 @@
     <ClInclude Include="src\menu\main_menu.hpp" />
     <ClInclude Include="src\menu\player\animation\animation_menu.hpp" />
     <ClInclude Include="src\menu\player\player_menu.hpp" />
+    <ClInclude Include="src\rage\classes\atArray.hpp" />
+    <ClInclude Include="src\rage\classes\classes.hpp" />
+    <ClInclude Include="src\rage\classes\fwddec.hpp" />
     <ClInclude Include="src\rage\classes\native.hpp" />
+    <ClInclude Include="src\rage\classes\script_thread.hpp" />
+    <ClInclude Include="src\rage\classes\sysMemAllocator.hpp" />
+    <ClInclude Include="src\rage\classes\tls_context.hpp" />
     <ClInclude Include="src\rage\crossmap.hpp" />
     <ClInclude Include="src\rage\invoker.hpp" />
     <ClInclude Include="src\rage\natives.hpp" />
     <ClInclude Include="src\rage\native_queue.hpp" />
     <ClInclude Include="src\rage\types.hpp" />
     <ClInclude Include="src\rage\vector.hpp" />
+    <ClInclude Include="src\util\detour.hpp" />
+    <ClInclude Include="src\util\fiberpool\fiber_pool.hpp" />
     <ClInclude Include="src\util\functions.hpp" />
     <ClInclude Include="src\util\logger.hpp" />
     <ClInclude Include="src\util\memory.hpp" />
+    <ClInclude Include="src\util\script\script.hpp" />
+    <ClInclude Include="src\util\script_mgr.hpp" />
   </ItemGroup>
   <ItemGroup>
     <MASM Include="src\rage\invoker_asm.asm" />

@@ -6,7 +6,8 @@
 #include "../main_menu.hpp"
 #include "animation/animation_menu.hpp"
 #include "../../rage/natives.hpp"
-
+#include "..//..//util/functions.hpp"
+#include <chrono>
 namespace based::gui
 {
 	player_menu* player_menu::get() {
@@ -44,6 +45,34 @@ namespace based::gui
 				ENTITY::SET_ENTITY_INVINCIBLE(PLAYER::PLAYER_PED_ID(), false);
 			})
 		);
-		push(button("Option 4"));
+		push(button("spawn ped")
+			.add_rage_on_click([] {
+				const auto player = PLAYER::PLAYER_PED_ID();
+				const auto ped_hash = util::gta::joaat("player_zero");
+				const auto coords = ENTITY::GET_ENTITY_COORDS(player, true);
+				const auto ped = util::gta::create_ped(ped_hash, coords);
+			})
+		);
+		push(button("spawn vehicle")
+			.add_rage_on_click([] {
+				const auto player = PLAYER::PLAYER_PED_ID();
+				const auto veh_hash = util::gta::joaat("adder");
+				const auto coords = ENTITY::GET_ENTITY_COORDS(player, true);
+				const auto heading = ENTITY::GET_ENTITY_HEADING(player);
+				const auto veh = util::gta::create_vehicle(veh_hash, coords, heading);
+			})
+		);
+		push(button("spawn object")
+			.add_rage_on_click([] {
+				const auto player = PLAYER::PLAYER_PED_ID();
+				const auto obj_hash = util::gta::joaat("lts_prop_lts_ramp_01");
+				const auto coords = ENTITY::GET_ENTITY_COORDS(player, true);
+				const auto obj = util::gta::create_object(obj_hash, coords);
+			})
+		);
 	}
 }
+
+/*
+
+*/

@@ -16,6 +16,8 @@ namespace based::global
 		m_native_registration_table = reinterpret_cast<rage::scrNativeRegistrationTable*>(util::check_ptr("nrt", signature("48 8D 0D ? ? ? ? 48 8B 14 FA E8 ? ? ? ? 48 85 C0 75 0A").scan().add(3).rip().as<rage::scrNativeRegistrationTable*>()));
 		m_swap_chain = reinterpret_cast<IDXGISwapChain**>(util::check_ptr("SC", signature("48 8B 0D ? ? ? ? 48 8B 01 44 8D 43 01 33 D2 FF 50 40 8B C8").scan().add(3).rip().as<IDXGISwapChain**>()));
 
+		m_script_threads = signature("45 33 F6 8B E9 85 C9 B8").scan().sub(4).rip().sub(8).as<decltype(m_script_threads)>();
+
 		m_native_return = util::check_ptr("nr", signature("FF E3").scan().as<LPVOID>());
 		m_run_script_threads = util::check_ptr("rst", signature("45 33 F6 8B E9 85 C9 B8").scan().sub(0x1F).as<decltype(m_run_script_threads)>());
 	}

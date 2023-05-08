@@ -1,7 +1,7 @@
 #pragma once
 
 #include "crossmap.hpp"
-#include "classes/native.hpp"
+#include "classes/classes.hpp"
 #include "../hooking/hooking.hpp"
 #include <unordered_map>
 
