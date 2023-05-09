@@ -55,13 +55,13 @@ namespace based::global
 			if ((m_console_handle = GetStdHandle(STD_OUTPUT_HANDLE)) != nullptr)
 			{
 				//console size
-				HWND console = GetConsoleWindow();
+				const auto console = GetConsoleWindow();
 				RECT r;
 				GetWindowRect(console, &r);
 				MoveWindow(console, r.left, r.top, 550, 350, TRUE);
 
 				//console font
-				CONSOLE_FONT_INFOEX cfi;
+				CONSOLE_FONT_INFOEX cfi{};
 				cfi.cbSize = sizeof(cfi);
 				cfi.nFont = 0;
 				cfi.dwFontSize.X = 0;
@@ -73,7 +73,7 @@ namespace based::global
 				SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), FALSE, &cfi);
 
 				//console background
-				SetLayeredWindowAttributes(console, NULL, 220, LWA_ALPHA);
+				SetLayeredWindowAttributes(console, NULL, 255, LWA_ALPHA);
 
 				SetConsoleTitleA("based");
 				SetConsoleOutputCP(CP_UTF8);
@@ -88,22 +88,20 @@ namespace based::global
 				FreeConsole();
 		}
 
-#pragma warning(push)
-#pragma warning(disable: 4996) 
 		template <typename... args>
 		void log_to_console(log_color color, std::string_view type, std::string_view str, args&&... vars)
 		{
 			if (m_console_out && m_console_handle)
 			{
-				auto now = std::chrono::system_clock::now();
-				auto now_c = std::chrono::system_clock::to_time_t(now);
-				tm now_tm = *std::localtime(&now_c);
+				const auto now = std::chrono::system_clock::now();
+				const auto now_c = std::chrono::system_clock::to_time_t(now);
+				tm now_tm;
+				localtime_s(&now_tm, &now_c);
 
 				SetConsoleTextAttribute(m_console_handle, static_cast<std::uint16_t>(color));
 				m_console_out << "[" << std::put_time(&now_tm, "%H:%M:%S") << "] " << type << " -> " << std::vformat(str, std::make_format_args(vars...)) << std::endl;
 			}
 		}
-#pragma warning(pop)
 
 		template <typename... args>
 		void log_to_file(std::string_view str, args&&... vars)
