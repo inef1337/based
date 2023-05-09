@@ -219,6 +219,7 @@
     <ClInclude Include="src\rage\types.hpp" />
     <ClInclude Include="src\rage\vector.hpp" />
     <ClInclude Include="src\util\detour.hpp" />
+    <ClInclude Include="src\util\exception_handler.hpp" />
     <ClInclude Include="src\util\fiberpool\fiber_pool.hpp" />
     <ClInclude Include="src\util\functions.hpp" />
     <ClInclude Include="src\util\logger.hpp" />

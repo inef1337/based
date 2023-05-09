@@ -20,6 +20,8 @@ namespace based::global
 	void init_queue();
 	void get_input();
 
+	inline PVOID vectored_exception_handler{};
+
 	inline std::unique_ptr<gui::submenu_handler> submenu_handler;
 	inline std::unique_ptr<gui::control_interface> control;
 }

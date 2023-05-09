@@ -7,14 +7,16 @@
 #include <iostream>
 #include <Windows.h>
 #include <cstdint>
-
+#include "util/exception_handler.hpp"
 #include "util/script_mgr.hpp"
 #include "util/script/script.hpp"
 #include "util/fiberpool/fiber_pool.hpp"
+
 namespace based
 {
     void main_thread(const HMODULE instance)
     {
+        global::vectored_exception_handler = AddVectoredExceptionHandler(0, exception_handler);
         try
         {
             global::init_logger();
@@ -60,6 +62,10 @@ namespace based
             Sleep(10000);
         }
 
+        if (global::vectored_exception_handler) {
+            RemoveVectoredExceptionHandler(global::vectored_exception_handler);
+        }
+        
         FreeLibraryAndExitThread(instance, 0);
     }
 }

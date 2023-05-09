@@ -120,6 +120,14 @@ namespace based::global
 			log_to_file(format, vars...);
 		}
 
+		template <typename ...args>
+		inline void log_excp(std::string_view format, args &...vars)
+		{
+			std::string_view type = "excp";
+			log_to_console(log_color::red | log_color::intensify, type, format, vars...);
+			log_to_file(format, vars...);
+		}
+
 	private:
 		bool m_did_console_exist{};
 
